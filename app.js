@@ -16,6 +16,10 @@ const PORT = process.env.PORT || 3000;
 
 const activeGames = {};
 
+app.get('/', (req, res) => {
+    res.send('Bot is running');
+});
+
 app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async function (req, res) {
     // Interaction id, type and data
     const { id, type, data } = req.body;
