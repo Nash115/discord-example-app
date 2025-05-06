@@ -20,6 +20,10 @@ app.get('/', (req, res) => {
     res.send('Bot is running');
 });
 
+function getAppEmoji(id) {
+    return `<:graviton:${id}>`;
+}
+
 app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async function (req, res) {
     // Interaction id, type and data
     const { id, type, data } = req.body;
@@ -42,7 +46,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
                 type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
                 data: {
                     // Fetches a random emoji to send from a helper function
-                    content: `hello world ${getRandomEmoji()}`,
+                    content: `${getAppEmoji('1354007938871857162')} hello world ${getRandomEmoji()}`,
                 },
             });
         }
